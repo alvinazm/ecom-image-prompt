@@ -1,12 +1,12 @@
 ---
 name: ss-art-prompt-image
-description: 电商套图提示词工作台 — 只把用户的输入（产品/平台/风格/数量）转换成可直接复制的 AI 生图提示词，不执行任何生图动作、不调用任何生图工具。覆盖 Amazon、Shopify、TikTok Shop、淘宝/天猫/京东/拼多多、1688、Shopee（虾皮）、Ozon、Lazada、Coupang 等电商平台。**社媒平台（Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草）请走 `ss-art-prompt-social-image`**（社媒需配贴文文案）。输出提示词后由用户自行粘贴到任意生图工具生成。触发词：多平台套图、做套图、电商主图、平台套图、电商图片、海外套图、listing 套图、提示词、生图提示词、Amazon 套图、Shopify 套图、TikTok Shop 套图、淘宝套图、1688 套图、Shopee 套图、Ozon 套图、套图案例、套图案例展示。需要做任何一个电商平台的套图、listing 主副图、A+/详情页、活动海报并只想要提示词时使用。
+description: 电商套图提示词工作台 — 只把用户的输入（产品/平台/风格/数量）转换成可直接复制的 AI 生图提示词，不执行任何生图动作、不调用任何生图工具。覆盖 Amazon、Shopify、TikTok Shop、淘宝/天猫/京东/拼多多、1688、Shopee（虾皮）、Ozon、Lazada、Coupang 等电商平台。输出提示词后由用户自行粘贴到任意生图工具生成。触发词：多平台套图、做套图、电商主图、平台套图、电商图片、海外套图、listing 套图、提示词、生图提示词、Amazon 套图、Shopify 套图、TikTok Shop 套图、淘宝套图、1688 套图、Shopee 套图、Ozon 套图、套图案例、套图案例展示。需要做任何一个电商平台的套图、listing 主副图、A+/详情页、活动海报并只想要提示词时使用。
 agent_created: true
 ---
 
 # 电商套图提示词工作台（ss-art-prompt-image）
 
-本 skill 只做一件事：**把你的输入变成高质量的生图提示词**，然后提示你拿去生图。它不生成、不调用、不执行任何图像生成动作。**只覆盖电商平台套图；社媒平台请走 `ss-art-prompt-social-image`（社媒图必须配贴文）。**
+本 skill 只做一件事：**把你的输入变成高质量的生图提示词**，然后提示你拿去生图。它不生成、不调用、不执行任何图像生成动作。**只覆盖电商平台套图**
 
 原有的 `ss-amazon-image-generation` / `shopify-image-generator` / `tiktok-shop-image` / `china-commerce-image-prompt-generator` / `1688-image-prompt-generator` / `ozon-image-prompt-generator` 已经把各自的平台逻辑写到了非常细的程度，本 skill 不是替代它们，而是把它们汇总到一个总线入口：
 
@@ -15,7 +15,6 @@ agent_created: true
 - **统一工作流**：先识别平台与品类 → 再识别图片角色 → 再选风格 → 输出确认稿 → 用户确认 → 输出提示词。
 - **只出提示词**：确认稿通过后，只输出可复制的提示词，**不生成任何图片**，并提示用户自行去生图工具生成。
 - **缺啥补啥**：补齐原 skill 漏掉的 Shopee（虾皮）、Lazada、Coupang。
-- **社媒分流**：Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草 → 转 `ss-art-prompt-social-image`（该技能同时输出贴文 caption + hashtags / 标题 + 标签）。
 
 ## 使用方法
 
@@ -31,8 +30,6 @@ agent_created: true
 规格：{尺码 / 材质 / 颜色 / 参数 / 卖点，如"冰丝面料、UPF50+、3 色可选"}
 风格：{可选，如"Phone UGC 镜自拍 / 高级棚拍 / 参数解释型 / 大字海报"}
 ```
-
-> 社媒平台（Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草）请走 **`ss-art-prompt-social-image`**（社媒图需配贴文文案）。
 
 #### 示例 1：单平台
 
@@ -110,7 +107,6 @@ agent_created: true
 | Lazada / 来赞达 / 东南亚 B2C | `references/platforms/lazada.md` | 新增（无原 skill，规则已内联） |
 | Coupang / 韩国 / 火箭配送 | `references/platforms/coupang.md` | 新增（无原 skill，规则已内联） |
 
-> **社媒平台（Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草）已拆到 `ss-art-prompt-social-image`**，那边会同时输出图片提示词 + 贴文文案（caption + hashtags / 标题 + 标签），社媒需求请走那个技能。
 
 ## 通用原则（适用于所有平台）
 
@@ -151,7 +147,6 @@ agent_created: true
 - 单张海报/品牌大片：使用具体平台的 image generation skill。
 - 视频脚本/分镜：使用 video 类 skill（`ss-art-prompt-video`）。
 - 对标图复刻提示词：使用 `ss-art-prompt-clone`。
-- **社媒平台（Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草）：使用 `ss-art-prompt-social-image`**（社媒图需配贴文文案）。
 - 用户明确指定其他套图 skill（如 `humanizer-zh`、`detail-page-planner` 等）：继续用原 skill。
 
 ## 子模块文件清单
@@ -176,8 +171,6 @@ agent_created: true
 - `references/platforms/taobao-jd-pdd/` — `apparel-main-sub-image-logic.md` / `cosmetics-main-sub-image-logic.md` / `cosmetics-detail-page-logic.md` / `oral-care-main-sub-detail-logic.md`
 - `references/platforms/1688/` — `1688-main-sub-image-logic.md` / `1688-detail-page-logic.md` / `1688-spec-parameter-logic.md` / `1688-factory-trust-logic.md` / `1688-campaign-poster-logic.md`
 - `references/platforms/ozon/` — `ozon-general-layouts.md` / `ozon-cover-layouts.md` / `ozon-fashion-layouts.md` / `xiaomi-3c.md` / `Hillsusu-desk.md`
-
-> **社媒模块（instagram/ pinterest/ xiaohongshu/ china-ugc/）已整体移到 `ss-art-prompt-social-image`**（references/platforms/ 下），社媒需求走那个技能。
 
 ### 公共文件
 
@@ -204,10 +197,6 @@ agent_created: true
 | `shopee` | 缺，本 skill 补齐 | `shopee.md`（规则内联） |
 | `lazada` | 缺，本 skill 补齐 | `lazada.md`（规则内联） |
 | `coupang` | 缺，本 skill 补齐 | `coupang.md`（规则内联） |
-| `china-ugc-ecommerce-image-prompt-generator` | 保留 | **已移到 `ss-art-prompt-social-image`**（`china-ugc.md` + 7 个 reference） |
-| `instagram-post-generator` | 保留 | **已移到 `ss-art-prompt-social-image`**（`instagram.md` + `instagram/`） |
-| `pinterest-pin-generator` | 保留 | **已移到 `ss-art-prompt-social-image`**（`pinterest.md` + 10 个 reference） |
-| `xiaohongshu` | 缺，原补齐 | **已移到 `ss-art-prompt-social-image`**（`xiaohongshu.md` 规则内联） |
 
 ## 快速示例
 
@@ -238,12 +227,3 @@ agent_created: true
 ```
 
 → 加载 `references/platforms/_case-gallery.md`，输出案例展示清单。
-
----
-
-**维护说明**：
-
-- 品类/图类型规则只在 `references/platforms/{platform}/` 子目录文件里维护；入口文件只维护平台定位、平台硬规则和路由表，**不要在入口复述子目录已有细节**。
-- 原始 skill（如 `tiktok-shop-image`）更新时，把更新同步到对应的 `references/platforms/{platform}/` 子文件；只有路由或平台硬规则变化时才需要改入口文件。
-- 新增/重命名子文件时，必须同步更新入口路由表。
-- 社媒模块的更新同步到 `ss-art-prompt-social-image`。

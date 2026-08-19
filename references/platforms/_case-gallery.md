@@ -68,7 +68,6 @@
 7. **Coupang · 3C 韩文大字海报** — 火箭配送 + 韩文大字 + 多 SKU。参考 `references/platforms/coupang.md`。
 8. **Lazada · 东南亚 3C / 家居** — 多语言 + 3C 卖点图。参考 `references/platforms/lazada.md`。
 
-> **社媒案例（Pinterest / Instagram / 淘宝 UGC / 小红书）已移到 `ss-art-prompt-social-image` 的 `references/platforms/_case-gallery.md`**，社媒贴文 + 图需求走那个技能。
 
 ## 用户自定义案例
 

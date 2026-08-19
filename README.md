@@ -1,6 +1,6 @@
 # ecom-image-prompt — 电商套图提示词工作台
 
-一个 Codex skill：把用户输入（产品 / 平台 / 风格 / 数量）转换成**可直接复制**的 AI 生图提示词。只产出提示词，不执行任何生图动作、不调用生图工具，生成由用户自行在任意生图工具中完成。
+一个电商套图 skill：把用户输入（产品 / 平台 / 风格 / 数量）转换成**可直接复制**的 AI 生图提示词。只产出提示词，不执行任何生图动作、不调用生图工具，生成由用户自行在任意生图工具中(如豆包、即梦、chatgpt、nanobanana)完成。
 
 ## 功能特性
 
@@ -26,8 +26,6 @@
 
 流程：识别平台与品类 → 加载对应平台模块 → 确认风格 → 输出确认稿 → 用户确认 → 交付完整提示词（并提示用户自行生图）。
 
-> 社媒平台（Instagram / Pinterest / 小红书 / 抖音小红书 UGC 种草）请走 `ss-art-prompt-social-image`（社媒图需配贴文文案）。
-
 ## 项目结构
 
 ```
@@ -43,11 +41,11 @@ references/platforms/
 
 ## 与其他 skill 的关系
 
-本 skill 是电商套图提示词的统一入口，汇总了原 Amazon / Shopify / TikTok Shop / 淘宝系 / 1688 / Ozon 等 skill 的平台逻辑，并补齐了 Shopee、Lazada、Coupang。原 skill 均保留，可继续单独使用；社媒类需求统一分流到 `ss-art-prompt-social-image`。
+本 skill 是电商套图提示词的统一入口，汇总了原 Amazon / Shopify / TikTok Shop / 淘宝系 / 1688 / Ozon 等 skill 的平台逻辑，并补齐了 Shopee、Lazada、Coupang。
 
 ## 维护约定
 
 - 品类 / 图类型规则只在 `references/platforms/{platform}/` 子目录维护
 - 入口文件只维护平台定位、平台硬规则和路由表，不复述子目录细节
 - 新增 / 重命名子文件时，同步更新入口路由表
-- 原始 skill 更新时，同步对应子目录文件；社媒模块同步到 `ss-art-prompt-social-image`
+- 原始 skill 更新时，同步对应子目录文件
