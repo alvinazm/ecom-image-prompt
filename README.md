@@ -48,10 +48,6 @@ references/platforms/
 
 分层原则：**入口只做路由，子目录是唯一事实源**。品类细节只写入子目录文件，入口文件不承载执行细节，避免内容重复与漂移。
 
-## 与其他 skill 的关系
-
-本 skill 是电商套图提示词的统一入口，汇总了原 Amazon / Shopify / TikTok Shop / 淘宝系 / 1688 / Ozon 等 skill 的平台逻辑，并补齐了 Shopee、Lazada、Coupang。
-
 ## 维护约定
 
 - 品类 / 图类型规则只在 `references/platforms/{platform}/` 子目录维护
